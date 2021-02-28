@@ -16,7 +16,9 @@
     "url": "https://github.com/mpaccione/leetcode/issues"
   },
   "homepage": "https://github.com/mpaccione/leetcode#readme",
-  "dependencies": {},
+  "dependencies": {
+    "underscore": "^1.12.0"
+  },
   "devDependencies": {
     "jasmine-spec-reporter": "^6.0.0",
     "jasmine": "^3.6.4"
