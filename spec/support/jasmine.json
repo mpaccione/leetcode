@@ -1,0 +1,11 @@
+{
+  "spec_dir": "easy",
+  "spec_files": [
+    "array/index.js"
+  ],
+  "helpers": [
+    "../spec/helpers/**/*.js"
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": true
+}

@@ -1,0 +1,24 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "Leetcode Practice for Technical Interviews",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpaccione/leetcode.git"
+  },
+  "author": "Michael Paccione",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpaccione/leetcode/issues"
+  },
+  "homepage": "https://github.com/mpaccione/leetcode#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine-spec-reporter": "^6.0.0",
+    "jasmine": "^3.6.4"
+  }
+}
