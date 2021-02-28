@@ -27,7 +27,6 @@ const removeDuplicates = (array) => {
 };
 
 module.exports = function () {
-
   describe("Remove Duplicates from Sorted Array", () => {
     it("Array only contains integers", () => {
       removeDuplicates(randomArray).forEach((item) => {
