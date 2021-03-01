@@ -6,3 +6,9 @@ const rotateArray = require("./rotateArray.js")
 removeDuplicates()
 containsDuplicate()
 rotateArray()
+
+module.exports = function(){
+    removeDuplicates()
+    containsDuplicate()
+    rotateArray()    
+}
