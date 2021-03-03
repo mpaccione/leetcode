@@ -8,7 +8,6 @@ const stringOne = "anagram";
 const stringTwo = "nagaram";
 
 const isAnagram = (stringOne, stringTwo) => {
-
   function stringToIntegerArray(string){
     const integerArray = string.split("")
     .map((char) => {
@@ -27,7 +26,6 @@ const isAnagram = (stringOne, stringTwo) => {
       if (stringTwoArray[i] !== stringOneArray[i]) {
           return false
       }
-      
   }
 
   return true;
