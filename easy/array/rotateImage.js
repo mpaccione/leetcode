@@ -9,7 +9,7 @@
 // 4 | 5 | 6   =>   8 | 5 | 2
 // 7 | 8 | 9        9 | 6 | 3
 
-let matrix = [
+const matrix = [
   [1, 2, 3],
   [4, 5, 6],
   [7, 8, 9],
@@ -19,15 +19,29 @@ let matrix = [
 // Output: [[7,4,1],[8,5,2],[9,6,3]]
 
 const rotateArray = (matrixArr) => {
-    // TODO:
+  const matrixLength = matrixArr.length - 1;
+  // Loop over main array in reverse
+  for (let index1 = matrixLength; index1 >= 0; index1--) {
+    let counter = 0;
+    // Loop over with forEach for number value instead of array reference
+    matrixArr[index1].forEach((num, index2) => {
+      if (counter <= matrixLength) {
+        matrixArr[counter].push(num);
+        counter++;
+      }
+    });
+  }
+  // Remove Old Values
+  for (let n = 0; n <= matrixLength; n++) {
+    matrixArr[n].splice(0, matrixLength+1);
+  }
+  return matrixArr
 };
 
-rotateArray(matrix);
-
-// module.exports = function () {
-//   describe("Check for Rotation", () => {
-//     it("Array values match", () => {
-//        
-//     });
-//   });
-// };
+module.exports = function () {
+  describe("Check for Image Rotation", () => {
+    it("Array values match", () => {
+      expect(rotateArray(JSON.parse(JSON.stringify(matrix)))).toEqual([[7,4,1],[8,5,2],[9,6,3]])
+    });
+  });
+};
