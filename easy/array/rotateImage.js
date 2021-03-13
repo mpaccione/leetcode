@@ -27,13 +27,12 @@ const rotateArray = (matrixArr) => {
     matrixArr[index1].forEach((num, index2) => {
       if (counter <= matrixLength) {
         matrixArr[counter].push(num);
+        //matrixArr[counter].splice(0,1)
         counter++;
       }
     });
-  }
-  // Remove Old Values
-  for (let n = 0; n <= matrixLength; n++) {
-    matrixArr[n].splice(0, matrixLength+1);
+    // Remove Old Values
+    matrixArr[index1].splice(0, matrixLength+1)
   }
   return matrixArr
 };
