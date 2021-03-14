@@ -14,11 +14,11 @@ const moveZeros = (numArr) => {
   const arrLength = numArr.length - 1;
 
   for (let index = 0; index < arrLength; index++) {
-    // Loop over with forEach for number value instead of array reference
     if (numArr[index] === 0) {
       numArr.push(numArr.splice(index, 1)[0]);
     }
   }
+  
   return numArr;
 };
 
