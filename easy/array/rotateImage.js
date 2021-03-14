@@ -27,7 +27,6 @@ const rotateArray = (matrixArr) => {
     matrixArr[index1].forEach((num, index2) => {
       if (counter <= matrixLength) {
         matrixArr[counter].push(num);
-        //matrixArr[counter].splice(0,1)
         counter++;
       }
     });
