@@ -7,15 +7,25 @@
 // You may assume that nums1 has a size equal to m + n such that it has enough space to hold additional elements from nums2.
 
 const nums1 = [1, 2, 3];
-const m = 3;
+// const m = 3;
 const nums2 = [2, 5, 6];
-const n = 3;
+// const n = 3;
 
 const mergeArray = (nums1, nums2) => {
-  for (let index = 0; index < nums1.length - 1; index++) {
-    if (nums2[index] >= nums1[index] && nums2[index] < nums1[index+1] ) {
-      nums1.splice(index, 0, nums2[index]);
-    }
+  let start_idx = 0;
+  for (let num of nums2) {
+    for (let idx = start_idx; idx < nums1.length; idx++){
+      if (num <= nums1[idx]) {
+        nums1.splice(idx, 0, num);
+        start_idx = idx;
+        break;
+      }
+      if (idx == nums1.length - 1){
+        nums1.push(num);
+        start_idx = idx;
+        break;
+      }
+    }    
   }
   return nums1;
 };
