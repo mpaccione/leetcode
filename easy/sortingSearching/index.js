@@ -2,8 +2,8 @@ const mergeSortedArray = require("./mergeSortedArray.js");
 const firstBadVersion = require("./firstBadVersion.js");
 
 // Sorting and Searching
-mergeSortedArray();
-firstBadVersion();
+// mergeSortedArray();
+// firstBadVersion();
 
 module.exports = function () {
   mergeSortedArray();

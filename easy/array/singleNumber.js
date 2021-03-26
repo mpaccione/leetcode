@@ -15,7 +15,6 @@ const singleNumber = (numArr) => {
 
   for (let i = 0; i < numArr.length; i++) {
     const duplicateIndex = numArr.indexOf(numArr[i], i+1)
-    console.log({duplicateIndex})
 
     if (duplicateIndex === -1){
         singleNumber = numArr[i];

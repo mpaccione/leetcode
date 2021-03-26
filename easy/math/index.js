@@ -3,9 +3,9 @@ const countPrimes = require("./countPrimes.js")
 const powerOfThree = require("./powerOfThree.js")
 
 // Math
-fizzBuzz();
-countPrimes();
-powerOfThree();
+// fizzBuzz();
+// countPrimes();
+// powerOfThree();
 
 module.exports = function () {
   fizzBuzz();

@@ -2,8 +2,8 @@ const pascalsTriangle = require("./pascalsTriangle.js");
 const missingNumber = require("./missingNumber.js");
 
 // Other
-pascalsTriangle();
-missingNumber();
+// pascalsTriangle();
+// missingNumber();
 
 module.exports = function () {
   pascalsTriangle();

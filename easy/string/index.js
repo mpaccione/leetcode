@@ -4,10 +4,10 @@ const validAnagram = require("./validAnagram.js")
 const validPalindrome = require("./validPalindrome.js")
 
 // Strings
-reverseString()
-firstUniqueCharInString()
-validAnagram();
-validPalindrome();
+// reverseString()
+// firstUniqueCharInString()
+// validAnagram();
+// validPalindrome();
 
 module.exports = function(){
     reverseString();
