@@ -8,6 +8,7 @@ const rotateArray = require("./rotateArray.js");
 const rotateImage = require("./rotateImage.js");
 const singleNumber = require("./singleNumber.js")
 const validSudoku = require("./validSudoku.js");
+const bestTimeToBuyAndSellStock = require('./bestTimeToBuyAndSellStock.js');
 
 // Arrays
 // plusOne();
@@ -20,6 +21,7 @@ const validSudoku = require("./validSudoku.js");
 // rotateImage();
 // singleNumber();
 // validSudoku();
+// bestTimeToBuyAndSellStock();
 
 module.exports = function () {
   plusOne();
@@ -32,4 +34,5 @@ module.exports = function () {
   rotateImage();
   singleNumber();
   validSudoku();
+  bestTimeToBuyAndSellStock();
 };
