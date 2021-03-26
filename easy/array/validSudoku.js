@@ -114,8 +114,6 @@ const validSudoku = (sudokuArr) => {
   return validSudoku;
 };
 
-console.log(validSudoku(truthyBoard));
-
 module.exports = function () {
   describe("Check for Valid Sudoku", () => {
     it("Valid Sudoku is valid", () => {

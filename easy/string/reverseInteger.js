@@ -25,7 +25,6 @@ const input4 = 0;
 
 const reverseInteger = (num) => {
   const reversed = parseInt(num.toString().split("").reverse().join(""));
-  console.log({ reversed });
   return reversed >= -Math.pow(2, 31) && reversed <= Math.pow(2, 31) - 1
     ? num >= 0
       ? reversed
