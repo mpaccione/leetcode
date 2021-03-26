@@ -3,6 +3,7 @@ const containsDuplicate = require("./containsDuplicate.js");
 const moveZeros = require("./moveZeros.js");
 const rotateArray = require("./rotateArray.js");
 const rotateImage = require("./rotateImage.js");
+const singleNumber = require("./singleNumber.js")
 const validSudoku = require("./validSudoku.js");
 
 // Arrays
@@ -11,6 +12,7 @@ containsDuplicate();
 moveZeros();
 rotateArray();
 rotateImage();
+singleNumber();
 validSudoku();
 
 module.exports = function () {
@@ -19,5 +21,6 @@ module.exports = function () {
   moveZeros();
   rotateArray();
   rotateImage();
+  singleNumber();
   validSudoku();
 };
