@@ -6,6 +6,7 @@ const strStr = require("./strStr.js")
 const validAnagram = require("./validAnagram.js")
 const validPalindrome = require("./validPalindrome.js")
 const longestCommonPrefix = require("./longestCommonPrefix.js")
+const countAndSay = require("./countAndSay.js")
 
 // Strings
 // reverseString()
@@ -16,6 +17,7 @@ const longestCommonPrefix = require("./longestCommonPrefix.js")
 // validAnagram();
 // validPalindrome();
 // longestCommonPrefix();
+// countAndSay();
 
 module.exports = function(){
     reverseString();
@@ -26,4 +28,5 @@ module.exports = function(){
     validAnagram();
     validPalindrome();
     longestCommonPrefix();
+    countAndSay();
 }

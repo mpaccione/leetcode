@@ -1,0 +1,72 @@
+//////////////////
+// INSTRUCTIONS //
+//////////////////
+
+// The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
+
+// countAndSay(1) = "1"
+// countAndSay(n) is the way you would "say" the digit string from countAndSay(n-1), which is then converted into a different digit string.
+// To determine how you "say" a digit string, split it into the minimal number of groups so that each group is a contiguous section all of the same character. Then for each group, say the number of characters, then say the character. To convert the saying into a digit string, replace the counts with a number and concatenate every saying.
+
+// For example, the saying and conversion for digit string "3322251": "23321511"
+
+// Given a positive integer n, return the nth term of the count-and-say sequence.
+
+/*
+Input: n = 1
+Output: "1"
+Explanation: This is the base case.
+
+Input: n = 4
+Output: "1211"
+Explanation:
+countAndSay(1) = "1"
+countAndSay(2) = say "1" = one 1 = "11"
+countAndSay(3) = say "11" = two 1's = "21"
+countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
+*/
+
+const useCase1 = 1;
+const useCase2 = 4;
+
+const sayNumber = (n) => {
+  if (n == "1") {
+    return "1";
+  }
+
+  let numStr = sayNumber(n - 1);
+  let nums = numStr.split("");
+  let newNum = "";
+  let i = 1;
+  let numberMatch = nums[0];
+  let consecutiveNumberCount = 1;
+
+  while (i < nums.length) {
+    let num = nums[i];
+
+    if (num == numberMatch) {
+      consecutiveNumberCount++;
+    } else {
+      newNum += `${consecutiveNumberCount}${numberMatch}`;
+      numberMatch = num;
+      consecutiveNumberCount = 1;
+    }
+
+    i++;
+  }
+
+  newNum += `${consecutiveNumberCount}${numberMatch}`;
+
+  return newNum;
+};
+
+module.exports = function () {
+  describe("Check Count and Say", () => {
+    it("Use Case 1", () => {
+      expect(sayNumber(useCase1)).toEqual("1");
+    });
+    it("Use Case 2", () => {
+      expect(sayNumber(useCase2)).toEqual("1211");
+    });
+  });
+};
