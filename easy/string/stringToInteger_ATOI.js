@@ -79,7 +79,7 @@ const stringToInteger_ATOI = (str) => {
 
   if (firstChar !== "-" && parseInt(firstChar) !== "NaN") {
     const int = parseInt(trimmedStr.split(" ")[0]);
-    return int >= -Math.pow(2, 31) && int <= Math.pow(2, 31) - 1 ? int : 0;
+    return int >= -Math.pow(2, 31) && int <= Math.pow(2, 31) - 1 ? positive ? int : -int : 0;
   } else {
     return 0;
   }

@@ -5,6 +5,7 @@ const firstUniqueCharInString = require("./firstUniqueCharInString.js")
 const strStr = require("./strStr.js")
 const validAnagram = require("./validAnagram.js")
 const validPalindrome = require("./validPalindrome.js")
+const longestCommonPrefix = require("./longestCommonPrefix.js")
 
 // Strings
 // reverseString()
@@ -14,6 +15,7 @@ const validPalindrome = require("./validPalindrome.js")
 // firstUniqueCharInString()
 // validAnagram();
 // validPalindrome();
+// longestCommonPrefix();
 
 module.exports = function(){
     reverseString();
@@ -23,4 +25,5 @@ module.exports = function(){
     firstUniqueCharInString();
     validAnagram();
     validPalindrome();
+    longestCommonPrefix();
 }
