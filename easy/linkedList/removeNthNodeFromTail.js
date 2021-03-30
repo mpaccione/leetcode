@@ -85,7 +85,7 @@ const output = (arr) => {
 };
 
 module.exports = function () {
-  describe("Delete Node check", () => {
+  describe("Remove Nth Node from Tail", () => {
     it("Use Case 1", () => {
       expect(output(removeNodeFromTail(nodes(useCase1), n1))).toEqual(output1);
     });
