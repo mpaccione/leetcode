@@ -18,52 +18,33 @@
  * }
  */
 
-const input = [4, 5, 1, 9];
-const node = 5;
-let nodes = undefined;
+const { toLinkedList, toNumArray } = require("./helper.js");
 
-// Format Nodes
-nodes = input.map((num, i) => {
-  return {
-    val: num,
-    next: input[i + 1] ? input[i + 1] : null,
+const useCase1 = [4, 5, 1, 9];
+const nodeVal = 5;
+
+const deleteNode = (l1, deleteVal) => {
+  const l2 = JSON.parse(JSON.stringify(l1))
+
+  function recursiveDelete(node) {
+    if (node.next === null) {
+      return
+    }
+
+    if (node.next.val === deleteVal) {
+      node.next = node.next.next; // Skip Node in Pointers
+    }
+    recursiveDelete(node.next);
   };
-});
 
-const deleteNode = (nodeArray, nodeValue) => {
-  const startIndex = nodeArray.findIndex((node) => node.val === nodeValue);
-  const arrayLength = nodeArray.length;
-
-  if (startIndex) {
-    // Delete Node
-    nodeArray.splice(startIndex, 1);
-
-    // Link Prior Node to next node.
-    nodeArray[startIndex - 1].next = nodeArray[startIndex].val;
-
-    // Loop through all nodes and change links
-    for (let i = startIndex; i < arrayLength - 1; i++) {
-      nodeArray[i].next = nodeArray[i + 1] ? nodeArray[i + 1].val : null;
-    }
-
-    return nodeArray;
-  } else {
-    return startIndex;
-  }
-};
-
-const output = (arr) => {
-  return arr.map((node) => {
-    if (node) {
-      return node.val;
-    }
-  });
+  recursiveDelete(l2)
+  return l2;
 };
 
 module.exports = function () {
   describe("Delete Node check", () => {
     it("Use Case 1", () => {
-      expect(output(deleteNode(nodes, node))).toEqual([4, 1, 9]);
+      expect(toNumArray(deleteNode(toLinkedList(useCase1), nodeVal))).toEqual([4, 1, 9]);
     });
   });
 };
