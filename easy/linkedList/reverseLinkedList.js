@@ -24,6 +24,8 @@
 // Input: head = []
 // Output: []
 
+const { toLinkedList, toNumArray, ListNode } = require("./helper.js");
+
 const useCase1 = [1, 2, 3, 4, 5];
 const output1 = [5, 4, 3, 2, 1];
 
@@ -33,55 +35,49 @@ const output2 = [2, 1];
 const useCase3 = [];
 const output3 = [];
 
-// Format Nodes
-const nodes = (input) => {
-  return input.map((num, i) => {
-    return {
-      val: num,
-      next: input[i + 1] ? input[i + 1] : null,
-    };
-  });
-};
-
-const reverseList = (nodeArray) => {
-  const arrayLength = nodeArray.length - 1;
-
-  if (arrayLength + 1 > 0) {
-    // Make Head the Tail
-    nodeArray[0].next = null
- 
-    for (let i = arrayLength; i > 1; i--) {
-      nodeArray[i].next = nodeArray[i - 1].val
-    }
-
-    return nodeArray.reverse();
-  } else {
-    return [];
-  }
-};
-
-const output = (arr) => {
-  if (!arr) {
-    return arr;
+const reverseList = (linkedList) => {
+  if (!linkedList){
+    return linkedList
   }
 
-  return arr.map((node) => {
-    if (node) {
-      return node.val;
+  let l2 = JSON.parse(JSON.stringify(linkedList));
+  let nextNode = null;
+  let currentNode = null;
+  let prevNode = null;
+
+  function recursiveReversion(node) {
+    if (node === null) {
+      return
     }
-  });
+
+    // Set Variables Pointers
+    prevNode = currentNode;
+    currentNode = node;
+    nextNode = node.next
+
+    // List Pointer Reversal
+    if (currentNode !== undefined) {
+      currentNode.next = prevNode;
+    }
+
+    recursiveReversion(nextNode);
+  }
+
+  recursiveReversion(l2)
+  return currentNode;
 };
+
 
 module.exports = function () {
   describe("Reverse Linked List check", () => {
     it("Use Case 1", () => {
-      expect(output(reverseList(nodes(useCase1)))).toEqual(output1);
+      expect(toNumArray(reverseList(toLinkedList(useCase1)))).toEqual(output1);
     });
     it("Use Case 2", () => {
-      expect(output(reverseList(nodes(useCase2)))).toEqual(output2);
+      expect(toNumArray(reverseList(toLinkedList(useCase2)))).toEqual(output2);
     });
     it("Use Case 3", () => {
-      expect(output(reverseList(nodes(useCase3)))).toEqual(output3);
+      expect(toNumArray(reverseList(toLinkedList(useCase3)))).toEqual(output3);
     });
   });
 };

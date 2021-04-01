@@ -13,5 +13,5 @@ module.exports = function(){
     deleteNode();
     removeNthNodeFromTail();
     reverseLinkedList();
-    mergeTwoSortedLists()
+    // mergeTwoSortedLists()
 }
