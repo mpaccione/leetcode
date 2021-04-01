@@ -15,14 +15,14 @@ const toLinkedList = (input) => {
 
 const toNumArray = (linkedList) => {
   if (!linkedList) {
-    return linkedList;
+    return [];
   }
 
   const numArray = [];
 
   (function recursiveTraversal(node) {
     numArray.push(node.val);
-    
+
     if (node.next === null) {
       return;
     }

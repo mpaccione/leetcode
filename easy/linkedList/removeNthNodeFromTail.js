@@ -38,62 +38,62 @@ const useCase3 = [1, 2];
 const n3 = 1;
 const output3 = [1];
 
-// Format Nodes
-const nodes = (input) => {
-  return input.map((num, i) => {
-    return {
-      val: num,
-      next: input[i + 1] ? input[i + 1] : null,
-    };
-  });
-};
+const { toLinkedList, toNumArray } = require("./helper.js");
 
-const removeNodeFromTail = (nodeArray, indexFromTail) => {
-  const arrayLength = nodeArray.length;
-  const startIndex = arrayLength - indexFromTail;
+const removeNodeFromTail = (linkedList, indexFromTail) => {
+  let l2 = JSON.parse(JSON.stringify(linkedList));
+  let length = 1;
+  let count = 1;
 
-  if (startIndex) {
-    // Delete Node
-    nodeArray.splice(startIndex, 1);
-
-    // Link Prior Node to next node.
-    if (arrayLength > 1) {
-      nodeArray[startIndex - 1].next = nodeArray[startIndex] ? nodeArray[startIndex].val : null;
-
-      // Loop through all nodes and change links
-      for (let i = startIndex; i < arrayLength - 1; i++) {
-        nodeArray[i].next = nodeArray[i + 1] ? nodeArray[i + 1].val : null;
-      }
+  // Get Total Length
+  (function recursiveTraversal(node) {
+    if (node === null || node.next === null) {
+      return;
     }
 
-    return nodeArray;
-  } else {
-    return [];
-  }
-};
+    length++;
+    recursiveTraversal(node.next);
+  })(linkedList);
 
-const output = (arr) => {
-  if (!arr) {
-    return arr;
-  }
-
-  return arr.map((node) => {
-    if (node) {
-      return node.val;
+  // Delete Nth Node
+  function recursiveDelete(node) {
+    if (node === null || (node.next === null && count === 1)) {
+      l2 = false;
+      return;
     }
-  });
+
+    if (count === length - indexFromTail) {
+      node.next = node.next.next ? node.next.next : null; // Skip Node in Pointers
+    }
+
+    count++;
+    if (node.next !== null) {
+      recursiveDelete(node.next);
+    } else {
+      return;
+    }
+  }
+
+  recursiveDelete(l2);
+  return l2;
 };
 
 module.exports = function () {
   describe("Remove Nth Node from Tail", () => {
     it("Use Case 1", () => {
-      expect(output(removeNodeFromTail(nodes(useCase1), n1))).toEqual(output1);
+      expect(
+        toNumArray(removeNodeFromTail(toLinkedList(useCase1), n1))
+      ).toEqual(output1);
     });
     it("Use Case 2", () => {
-      expect(output(removeNodeFromTail(nodes(useCase2), n2))).toEqual(output2);
+      expect(
+        toNumArray(removeNodeFromTail(toLinkedList(useCase2), n2))
+      ).toEqual(output2);
     });
     it("Use Case 3", () => {
-      expect(output(removeNodeFromTail(nodes(useCase3), n3))).toEqual(output3);
+      expect(
+        toNumArray(removeNodeFromTail(toLinkedList(useCase3), n3))
+      ).toEqual(output3);
     });
   });
 };

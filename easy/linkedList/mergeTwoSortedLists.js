@@ -24,7 +24,7 @@
 // Input: l1 = [], l2 = [0]
 // Output: [0]
 
-const { toLinkedList, toNumArray, ListNode } = require("./helper.js");
+const { toLinkedList, toNumArray } = require("./helper.js");
 
 const useCase1 = [
   [1, 2, 4],
