@@ -12,17 +12,17 @@ const nums2 = [2, 5, 6];
 // const n = 3;
 
 const mergeArray = (nums1, nums2) => {
-  let start_idx = 0;
+  let startIndex = 0;
   for (let num of nums2) {
-    for (let idx = start_idx; idx < nums1.length; idx++) {
-      if (num <= nums1[idx]) {
-        nums1.splice(idx, 0, num);
-        start_idx = idx;
+    for (let i = startIndex; i < nums1.length; i++) {
+      if (num <= nums1[i]) {
+        nums1.splice(i, 0, num);
+        startIndex = i;
         break;
       }
-      if (idx == nums1.length - 1) {
+      if (i == nums1.length - 1) {
         nums1.push(num);
-        start_idx = idx;
+        startIndex = i;
         break;
       }
     }
