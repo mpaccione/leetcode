@@ -26,7 +26,7 @@ The number of nodes in the list is in the range [1, 105].
 0 <= Node.val <= 9
 */
 
-const { toLinkedList, toNumArray } = require("./helper.js");
+const { toLinkedList } = require("./helper.js");
 
 const useCase1 = [1, 2, 2, 1];
 const output1 = true;
