@@ -39,104 +39,87 @@ const useCase3 = [[], [0]];
 const output3 = [0];
 
 const mergeTwoSortedLists = (l1, l2) => {
-  console.log({ l1 });
-  console.log({ l2 });
-
-  if (l1 !== null && l2 !== null) {
-    const l3 = {
-      val: null,
-      next: null,
-    };
-
-    // Loop over linked list nodes 
-
-    // Value Comparison -> Return Node with value 
-    function nodeTraversal(node){
-
-    }
-
-    return l3
-  }
-
-  if (l1 === null) {
+  if (l1 === null || l1 === undefined) {
     return l2;
-  } else if (l2 === null) {
+  } else if (l2 === null || l2 === undefined) {
     return l1;
   }
 
-  //
+  // Start At Head
+  let l1Node;
+  let l2Node;
+  let l3;
 
-  // const arrayLength1 = nodeArray[0].length;
-  // const arrayLength2 = nodeArray[1].length;
-  // const longerArray =
-  //   arrayLength1 >= arrayLength2 ? nodeArray[0] : nodeArray[1];
-  // const shorterArray =
-  //   arrayLength1 < arrayLength2 ? nodeArray[0] : nodeArray[1];
-  // if (arrayLength1 === 0 || arrayLength2 === 0) {
-  //   return longerArray;
-  // } else if (arrayLength1 > 0 && arrayLength2 > 0) {
-  //   let startIndex = 0;
-  //   while (shorterArray.length > 0) {
-  //     if (
-  //       longerArray[startIndex].val <= shorterArray[0].val &&
-  //       longerArray[startIndex + 1].val >= shorterArray[0].val
-  //     ) {
-  //       // Remove second linked list Head
-  //       const nodeToSplice = shorterArray.shift();
-  //       // Merge into first linked list
-  //       longerArray.splice(startIndex + 1, 0, nodeToSplice);
-  //     }
-  //     // Set Pointer
-  //     console.log(longerArray[startIndex]);
-  //     longerArray[startIndex].next = longerArray[startIndex + 1]
-  //       ? longerArray[startIndex + 1]
-  //       : null;
-  //     // Increase Start Index (Efficieny)
-  //     startIndex++;
-  //   }
-  //   // Terminate Tail
-  //   longerArray[longerArray.length - 1].next = null;
-  //   return longerArray;
-  // } else {
-  //   return [];
-  // }
+  // Determine List to Start
+  if (l1.val >= l2.val) {
+    l3 = { val: l1.val, next: undefined };
+    l1Node = l1.next;
+    l2Node = l2;
+  } else {
+    l3 = { val: l2.val, next: undefined };
+    l1Node = l1;
+    l2Node = l2.next;
+  }
+
+  // Traversal and Merge
+  (function mergeTraversal(l1Node, l2Node, l3Node) {
+   
+    // Tail Check
+    if (l1Node === null){
+      l3Node.next = l2Node;
+      return
+    } else if (l2Node === null){
+      l3Node.next = l1Node;
+      return
+    } else if (!l1Node && !l2Node) {
+      return;
+    }
+
+    // Compare Values
+    if (l1Node.val > l3Node.val && l1Node.val < l2Node.val) {
+      // Up One L1 Node
+      l3Node.next = l1Node;
+      mergeTraversal(l1Node.next, l2Node, l3Node.next);
+    } else {
+      // Up One L2 Node
+      l3Node.next = l2Node;
+      mergeTraversal(l1Node, l2Node.next, l3Node.next);
+    }
+
+  })(l1Node, l2Node, l3);
+
+  return l3;
 };
 
-console.log(JSON.stringify(toLinkedList(useCase1[0])));
-
-console.log(
-  mergeTwoSortedLists(toLinkedList(useCase1[0]), toLinkedList(useCase1[1]))
-);
-
 module.exports = function () {
-  describe("Reverse Linked List check", () => {
+  describe("Merge Two Sorted Linked Lists", () => {
     it("Use Case 1", () => {
       expect(
         toNumArray(
-          mergeTwoSortedLists([
+          mergeTwoSortedLists(
             toLinkedList(useCase1[0]),
             toLinkedList(useCase1[1]),
-          ])
+          )
         )
       ).toEqual(output1);
     });
     it("Use Case 2", () => {
       expect(
         toNumArray(
-          mergeTwoSortedLists([
+          mergeTwoSortedLists(
             toLinkedList(useCase2[0]),
             toLinkedList(useCase2[1]),
-          ])
+          )
         )
       ).toEqual(output2);
     });
     it("Use Case 3", () => {
       expect(
         toNumArray(
-          mergeTwoSortedLists([
+          mergeTwoSortedLists(
             toLinkedList(useCase3[0]),
             toLinkedList(useCase3[1]),
-          ])
+          )
         )
       ).toEqual(output3);
     });
