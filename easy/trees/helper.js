@@ -1,11 +1,13 @@
+const { create } = require("underscore");
+
 // Format Tree
 const toTree = (input) => {
   if (!input || input.length === 0) {
     return input;
   }
 
-  const value = input.unshift();
-  const rootNode = new TreeNode(value, undefined, undefined);
+  const value = input.shift();
+  const rootNode = new TreeNode(value, null, null);
 
   // Create Nodes Recursively
   (function createTreeNode(node) {
@@ -14,23 +16,30 @@ const toTree = (input) => {
       return;
     }
 
-    // Check for child nodes
-    if (node.left !== undefined && node.right !== undefined) {
-      input[0] > node.val
-        ? createTreeNode(node.right)
-        : createTreeNode(node.left);
+    // Check for child nodes and NULL handling
+    if (node.left !== null && input[0] < node.value) {
+      createTreeNode(node.left);
+    } else if (node.right !== null && input[0] > node.value) {
+      createTreeNode(node.right);
     }
 
-    // Get next value in num array
-    const newVal = input.unshift();
-    const newNode = new TreeNode(newVal, undefined, undefined);
+    // if (input[0] < node.value && node.left === null && node.right === null) {
+    //   node.left = new TreeNode(input.shift(), null, null);
+    //   createTreeNode(rootNode);
+    // }
 
-    if (newVal > node.val) {
+    // Get next value in num array
+    const newVal = input.shift();
+    const newNode = new TreeNode(newVal, null, null);
+
+    // Set child node
+    if (newVal > node.value) {
       node.right = newNode;
     } else {
       node.left = newNode;
     }
 
+    // Recursion at root
     createTreeNode(rootNode);
   })(rootNode);
 
@@ -50,10 +59,10 @@ const toNumArray = (rootNode) => {
     let terminalNodes = 0;
 
     for (let i = 0; i < numArray[depth].length; i++) {
-      if (numArray[depth][i] !== undefined) {
+      if (numArray[depth][i] !== null) {
         const { left, right } = numArray[depth][i];
-        left === undefined ? nodeArray.push(null) : nodeArray.push(left);
-        right === undefined ? nodeArray.push(null) : nodeArray.push(right);
+        left === null ? nodeArray.push(null) : nodeArray.push(left);
+        right === null ? nodeArray.push(null) : nodeArray.push(right);
       } else {
         terminalNodes++;
       }

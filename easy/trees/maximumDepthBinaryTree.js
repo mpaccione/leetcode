@@ -26,10 +26,10 @@
 
 const { toTree, toNumArray } = require("./helper.js");
 
-const useCase1 = [3, 9, 20, null, null, 15, 7];
+const useCase1 = [3, 9, 20, 2, 5, 15, 7];
 const output1 = 3;
 
-const useCase2 = [1, null, 2];
+const useCase2 = [1, 3, 2];
 const output2 = 2;
 
 const useCase3 = [];
@@ -38,6 +38,8 @@ const output3 = 0;
 const depthBinaryTree = (tree) => {
   return;
 };
+
+console.log(JSON.stringify(toTree(useCase1)));
 
 module.exports = function () {
   describe("Depth of Binary Tree Check", () => {
