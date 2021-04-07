@@ -70,17 +70,23 @@ const toNumArray = (rootNode) => {
 
     numArray.push(nodeArray);
     // Recursion
-    recursiveNodesToArrays(depth++);
-  })(1);
+    recursiveNodesToArrays(++depth);
+  })(0);
 
   // Loop Through Depth Based Node Array For Values
-  numArray.forEach((depthArray) => {
+  const newArray = numArray.map((depthArray, i) => {
     return depthArray.map((node) => {
-      return node.val;
+      if (node !== null && node.value !== null && (i <= i * 2 || i === 0)) {
+        return node.value;
+      }
     });
   });
 
-  return [].concat(...numArray);
+  return [].concat(...newArray).filter((num) => {
+    if (num !== undefined) {
+      return num;
+    }
+  });
 };
 
 function TreeNode(value, left, right) {

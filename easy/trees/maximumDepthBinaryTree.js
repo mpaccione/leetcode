@@ -40,7 +40,8 @@ const depthBinaryTree = (tree) => {
 };
 
 console.log("===============================");
-console.log(JSON.stringify(toTree(useCase1)));
+console.log(toNumArray(toTree(useCase1)));
+// console.log(JSON.stringify(toNumArray(toTree(useCase1))));
 
 module.exports = function () {
   describe("Depth of Binary Tree Check", () => {
