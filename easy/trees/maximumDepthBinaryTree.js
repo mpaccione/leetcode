@@ -39,6 +39,7 @@ const depthBinaryTree = (tree) => {
   return;
 };
 
+console.log("===============================");
 console.log(JSON.stringify(toTree(useCase1)));
 
 module.exports = function () {

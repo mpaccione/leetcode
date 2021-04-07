@@ -1,5 +1,3 @@
-const { create } = require("underscore");
-
 // Format Tree
 const toTree = (input) => {
   if (!input || input.length === 0) {
@@ -19,14 +17,11 @@ const toTree = (input) => {
     // Check for child nodes and NULL handling
     if (node.left !== null && input[0] < node.value) {
       createTreeNode(node.left);
+      return;
     } else if (node.right !== null && input[0] > node.value) {
       createTreeNode(node.right);
+      return;
     }
-
-    // if (input[0] < node.value && node.left === null && node.right === null) {
-    //   node.left = new TreeNode(input.shift(), null, null);
-    //   createTreeNode(rootNode);
-    // }
 
     // Get next value in num array
     const newVal = input.shift();
