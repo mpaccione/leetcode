@@ -24,7 +24,7 @@
  * }
  **/
 
-const { toTree, toNumArray } = require("./helper.js");
+const { toTree } = require("./helper.js");
 
 const useCase1 = [3, 9, 20, 2, 5, 15, 7];
 const output1 = 3;
@@ -36,23 +36,55 @@ const useCase3 = [];
 const output3 = 0;
 
 const depthBinaryTree = (tree) => {
-  return;
-};
+  if (!tree || tree.length === 0) {
+    return 0;
+  }
 
-console.log("===============================");
-console.log(toNumArray(toTree(useCase1)));
-// console.log(JSON.stringify(toNumArray(toTree(useCase1))));
+  const numArray = [[tree]];
+  let depth = 0;
+
+  // Convert Binary Tree to Depth Based Node Array
+  (function recursiveNodesToArrays(d) {
+    const nodeArray = [];
+    let terminalNodes = 0;
+
+    // Determine if at final depth by checking if node array is all nulls
+    for (let i = 0; i < numArray[d].length; i++) {
+      if (numArray[d][i] !== null) {
+        const { left, right } = numArray[d][i];
+        left === null ? nodeArray.push(null) : nodeArray.push(left);
+        right === null ? nodeArray.push(null) : nodeArray.push(right);
+      } else {
+        terminalNodes++;
+      }
+    }
+
+    // If all nodes are undefined stop
+    if (terminalNodes === numArray[d].length) {
+      // Appear to be one high so we minus one
+      depth = --d;
+      return;
+    }
+
+    numArray.push(nodeArray);
+
+    // Recursion
+    recursiveNodesToArrays(++d);
+  })(depth);
+
+  return depth;
+};
 
 module.exports = function () {
   describe("Depth of Binary Tree Check", () => {
     it("Use Case 1", () => {
-      expect(toNumArray(depthBinaryTree(toTree(useCase1)))).toEqual(output1);
+      expect(depthBinaryTree(toTree(useCase1))).toEqual(output1);
     });
     it("Use Case 2", () => {
-      expect(toNumArray(depthBinaryTree(toTree(useCase2)))).toEqual(output2);
+      expect(depthBinaryTree(toTree(useCase2))).toEqual(output2);
     });
     it("Use Case 3", () => {
-      expect(toNumArray(depthBinaryTree(toTree(useCase3)))).toEqual(output3);
+      expect(depthBinaryTree(toTree(useCase3))).toEqual(output3);
     });
   });
 };

@@ -53,6 +53,7 @@ const toNumArray = (rootNode) => {
     const nodeArray = [];
     let terminalNodes = 0;
 
+    // Determine if at final depth by checking if node array is all nulls
     for (let i = 0; i < numArray[depth].length; i++) {
       if (numArray[depth][i] !== null) {
         const { left, right } = numArray[depth][i];
@@ -82,6 +83,7 @@ const toNumArray = (rootNode) => {
     });
   });
 
+  // Return only numbers
   return [].concat(...newArray).filter((num) => {
     if (num !== undefined) {
       return num;
