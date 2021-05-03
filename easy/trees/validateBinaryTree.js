@@ -32,6 +32,8 @@ const output1 = true;
 const useCase2 = [5, 1, 4, null, null, 3, 6];
 const output2 = false;
 
+// This is taking in a numArray instead of a tree because my helper function I created is not designed to accept incorrect trees
+
 const validateBinaryTree = (numArray) => {
   if (!numArray || numArray.length === 0) {
     return false;
